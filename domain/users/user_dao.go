@@ -2,6 +2,7 @@ package users
 
 import (
 	"fmt"
+	"github.com/aryzk29/go_course-bookstore_users-api/datasoruces/mysql/users"
 	"github.com/aryzk29/go_course-bookstore_users-api/utils/date_utils"
 	"github.com/aryzk29/go_course-bookstore_users-api/utils/errors"
 )
@@ -11,6 +12,10 @@ var (
 )
 
 func (user User) Get() *errors.RestErr {
+	if err := users.Client.Ping(); err != nil {
+		panic(err)
+	}
+
 	result := usersDB[user.Id]
 	if result == nil {
 		return errors.NewNotFoundError(fmt.Sprintf("user %d not found", user.Id))
