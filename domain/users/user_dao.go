@@ -1,11 +1,10 @@
 package users
 
 import (
-	"fmt"
 	"github.com/aryzk29/go_course-bookstore_users-api/datasoruces/mysql/users"
 	"github.com/aryzk29/go_course-bookstore_users-api/utils/date_utils"
 	"github.com/aryzk29/go_course-bookstore_users-api/utils/errors"
-	"strings"
+	"github.com/aryzk29/go_course-bookstore_users-api/utils/mysql_utils"
 )
 
 const (
@@ -22,11 +21,7 @@ func (user *User) Get() *errors.RestErr {
 
 	result := stmt.QueryRow(user.Id)
 	if err := result.Scan(&user.Id, &user.FirstName, &user.LastName, &user.Email, &user.DateCreated); err != nil {
-		if strings.Contains(err.Error(), "no rows in result set") {
-			return errors.NewNotFoundError(fmt.Sprintf("user id %d not found", user.Id))
-		}
-		fmt.Println(err)
-		return errors.NewInternalServerError(fmt.Sprintf("error when trying to get user %d", user.Id))
+		return mysql_utils.ParseError(err)
 	}
 
 	return nil
@@ -43,15 +38,12 @@ func (user *User) Save() *errors.RestErr {
 
 	insertResult, err := stmt.Exec(user.FirstName, user.LastName, user.Email, user.DateCreated)
 	if err != nil {
-		if strings.Contains(err.Error(), "email_UNIQUE") {
-			return errors.NewBadRequestError(fmt.Sprintf("email %s already exist", user.Email))
-		}
-		return errors.NewInternalServerError(fmt.Sprintf("error when trying to save user %s", err.Error()))
+		return mysql_utils.ParseError(err)
 	}
 
 	userId, err := insertResult.LastInsertId()
 	if err != nil {
-		return errors.NewInternalServerError(fmt.Sprintf("error when trying to save user %s", err.Error()))
+		return mysql_utils.ParseError(err)
 	}
 	user.Id = userId
 
