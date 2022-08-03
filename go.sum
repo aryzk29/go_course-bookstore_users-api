@@ -1,3 +1,5 @@
+github.com/aryzk29/bookstore_oauth-go v0.0.0-20220803074131-8eb69e0455dc h1:D3t9jdt8gCc8s/lcrxeu+2qFqd1xLmckqGzX1UZQ+iY=
+github.com/aryzk29/bookstore_oauth-go v0.0.0-20220803074131-8eb69e0455dc/go.mod h1:QApo/kjIe3xXQVcX1USbIrRqyTXgleIWzy4Z3XUBNvA=
 github.com/benbjohnson/clock v1.1.0/go.mod h1:J11/hYXuz8f4ySSvYwY0FKfm+ezbsZBKZxNJlLklBHA=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
