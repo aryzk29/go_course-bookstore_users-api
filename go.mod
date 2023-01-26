@@ -5,7 +5,8 @@ go 1.18
 require github.com/gin-gonic/gin v1.8.1
 
 require (
-	github.com/aryzk29/bookstore_oauth-go v0.0.0-20220803074131-8eb69e0455dc // indirect
+	github.com/aryzk29/bookstore-utils-go v0.0.0-20220811082152-3d090d450707 // indirect
+	github.com/aryzk29/bookstore_oauth-go v0.0.0-20220811084341-1f7a8077804e // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
